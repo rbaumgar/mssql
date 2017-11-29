@@ -55,5 +55,10 @@ sqlcmd from the Openshift Terminal does not work.
 ### persistant volume   
 Mount a persistant volume at /var/opt/mssql
 
+### Evaluation
+The first line in the logfile ist
+This is an evaluation version.  There are [55] days left in the evaluation period.
+
+
 ## Reference
 This is based on the Dockerfile from https://github.com/Microsoft/mssql-docker/tree/master/linux/preview/RHEL
