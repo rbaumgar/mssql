@@ -6,7 +6,7 @@
 
 # Base OS layer: latest RHEL 7
 #FROM registry.access.redhat.com/rhel7
-FROM rhel7
+FROM rhel
 
 ### Atomic/OpenShift Labels - https://github.com/projectatomic/ContainerApplicationGenericLabels
 LABEL name="microsoft/mssql-server-linux" \
