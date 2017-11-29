@@ -1,0 +1,48 @@
+kind: List
+apiVersion: v1
+items:
+
+- kind: ImageStream
+  apiVersion: v1
+  metadata:
+    name: rhel7
+  spec:
+    tags:
+    - from:
+        kind: DockerImage
+        name: registry.access.redhat.com/rhel7:latest
+      name: latest
+
+- kind: ImageStream
+  apiVersion: v1
+  metadata:
+    labels:
+      app: rhel7-mssql
+    name: rhel7-mssql
+  spec: {}
+
+- kind: BuildConfig
+  apiVersion: v1
+  metadata:
+    labels:
+      app: rhel7-mssql
+    name: rhel7-mssql
+  spec:
+    output:
+      to:
+        kind: ImageStreamTag
+        name: rhel7-mssql:latest
+    source:
+      type: Git
+      git:
+        uri: https://github.com/rbaumgar/mssql.git
+    strategy:
+      dockerStrategy:
+        from:
+          kind: ImageStreamTag
+          name: rhel7:latest
+      type: Docker
+    triggers:
+    - type: ConfigChange
+    - type: ImageChange
+      imageChange: {}
