@@ -22,15 +22,15 @@ Check the created image
 
 ## Deploy Image
 Create a new deployment with two parameters. 
-* ACCEPT_EULA is mandatory! Confirms your acceptance of the End-User Licensing Agreement (https://go.microsoft.com/fwlink/?linkid=857698)
+* ACCEPT_EULA is mandatory! Confirms your acceptance of the [End-User Licensing Agreement] (https://go.microsoft.com/fwlink/?linkid=857698)
 * SA_PASSWORD is the database system administrator (userid = 'sa') password used to connect to SQL Server once the container is running. **Important note**: This password needs to include at least 8 characters of at least three of these four categories: uppercase letters, lowercase letters, numbers and non-alphanumeric symbols.
 * MSSQL_PID is the Product ID (PID) or Edition that the container will run with. Optional! Acceptable values:
--    **Developer**: This will run the container using the Developer Edition (this is the default if no MSSQL_PID environment variable is supplied)
--    **Express**: This will run the container using the Express Edition
--    **Standard** : This will run the container using the Standard Edition
--    **Enterprise**: This will run the container using the Enterprise Edition
--    **EnterpriseCore**: This will run the container using the Enterprise Edition Core
--    <valid product id>: This will run the container with the edition that is associated with the PID
+..-    **Developer**: This will run the container using the Developer Edition (this is the default if no MSSQL_PID environment variable is supplied)
+..-    **Express**: This will run the container using the Express Edition
+..-    **Standard** : This will run the container using the Standard Edition
+..-    **Enterprise**: This will run the container using the Enterprise Edition
+..-    **EnterpriseCore**: This will run the container using the Enterprise Edition Core
+..-    **valid product id**: This will run the container with the edition that is associated with the PID
 
 
     oc new-app --name=mssql --image-stream=rhel7-mssql -e ACCEPT_EULA=Y -e SA_PASSWORD=Welcome1
@@ -48,8 +48,11 @@ check the startup log with
     oc port-forward mssql-1-63k20 1433:1433
     
 I tested with SQLectron, https://sqlectron.github.io/
+
 e.g. connect to localhost port 1433 with user sa and password(SA_PASSWORD)
+
 select @@version
+
 go
 
 ## Open Tasks
